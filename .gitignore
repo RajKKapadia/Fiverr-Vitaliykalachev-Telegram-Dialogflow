@@ -1,0 +1,5 @@
+venv/
+.env
+__pycache__/
+test_script.py
+health-youniverse-chat-21fd12b35acc.json
