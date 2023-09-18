@@ -5,7 +5,6 @@ import json
 from google.cloud import dialogflow
 from dotenv import load_dotenv, find_dotenv
 import requests
-from flask import request
 
 load_dotenv(find_dotenv())
 
@@ -69,13 +68,12 @@ def process_request(body: dict) -> dict:
             'first_name': first_name
         }
     '''
-    body = request.get_json()
     message = ''
     is_bot = True
     is_text = False
     sender_id = None
     if 'message' in body.keys():
-        sender_id = body['message']['from']['id']
+        sender_id = body['message']['chat']['id']
         is_bot = body['message']['from']['is_bot']
         if 'text' in body['message'].keys():
             message += body['message']['text']
